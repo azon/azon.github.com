@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2013 | 握拳！</title>
+  <title>Archives: 2013/12 | 握拳！</title>
   <meta name="author" content="azon">
   
   
@@ -42,7 +42,7 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2013</h2>
+<h2 class="archive-title">2013/12</h2>
 
 
   
@@ -246,154 +246,6 @@
 <ol>
 <li><a href="http://shop.oreilly.com/product/9780596802301.do" target="_blank">The Art of Readable Code</a></li>
 </ol>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-11-26T15:19:35.000Z"><a href="/2013/11/26/bookreport_dotnetbookzero_ch4/">Nov 26 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/11/26/bookreport_dotnetbookzero_ch4/">Book Report - Dot Net Book Zero Ch4. Edit, Compile, Run, Disassemble</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h1>Mind Map</h1>
-<h1>Comment</h1>
-<p>本書建議讀者除了 Microsoft Visual Studio 之外, 至少用 MS-DOS<sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup> 的 CLI<sup id="fnref-2"><a href="#fn-2" class="footnote-ref">2</a></sup> 編譯 C# 程式一次. Windows 的命令提示字元視窗<sup id="fnref-3"><a href="#fn-3" class="footnote-ref">3</a></sup>不容易編譯 C# 程式, 原因是 MS-DOS 缺乏正確的環境設定無法找到 C# Compiler 位址. 書中範例是用 <code>notepad</code> 來撰寫 C# 程式碼. 方法如下.</p>
-<p>建立新檔</p>
-<figure class="highlight lang-shell"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="blockquote">&gt; notepad firstprogram.cs</span>
-</pre></td></tr></table></figure>
-
-
-<p>輸入程式碼</p>
-<figure class="highlight lang-csharp"><figcaption><span>firstprogram.cs </span></figcaption><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="code"><pre><span class="class"><span class="keyword">class</span> <span class="id">FirstProgram</span></span>
-{
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> Main()
-    {
-	System<span class="variable">.Console</span><span class="variable">.WriteLine</span>(<span class="string">"Hello, World!"</span>);
-    }
-}
-</pre></td></tr></table></figure>
-
-
-<p>寫的時候注意大小寫, C#是種大、小寫有別(case-sensetive)的程式語言. 完成後, 於 command line 執行 <code>csc</code> <sup id="fnref-4"><a href="#fn-4" class="footnote-ref">4</a></sup>指令編輯 firstprogram.cs 檔案.</p>
-<figure class="highlight lang-shell"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>&gt; <span class="built_in">csc</span> <span class="transposed_variable">firstprogram.</span>cs
-</pre></td></tr></table></figure>
-
-
-<p>執行</p>
-<figure class="highlight lang-shell"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="blockquote">&gt; firstprogram.cs</span>
-</pre></td></tr></table></figure>
-
-
-<p>另外, 對於編譯好的 .NET 執行檔(.NET executable)我們可以用 .NET Framework SDK 所附的反組譯工具 <code>Ildasm.exe</code> 進行剖析</p>
-<h1>References</h1>
-<div class="footnotes"><br><ol><br><li id="fn-1"><a href="http://zh.wikipedia.org/wiki/DOS#cite_note-1" target="_blank">Disk Operating System</a>, 這裡指的是微軟磁碟作業系統.<a href="#fnref-1" class="footnote-backref">&#8617;</a></li><br><li id="fn-2"><a href="http://zh.wikipedia.org/zh-tw/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2" target="_blank">Command Line Interface (CLI)</a> 是在圖形使用者介面得到普及之前使用最為廣泛的使用者介面，它通常不支援滑鼠，使用者透過鍵盤輸入指令，電腦接收到指令後，予以執行。也有人稱之為字符使用者介面 (CUI). 常見的 CLI 程式有 Linux 的 Bash 或是 Windows NT 系統的 cmd.exe/命令提示字元. <a href="#fnref-2" class="footnote-backref">&#8617;</a></li><br><li id="fn-3"><a href="http://zh.wikipedia.org/wiki/命令提示字元" target="_blank">Windows 命令提示字元 (cmd.exe)</a> 是 Windows NT 下的一個用於執行 Windows 控制台程式或某些 DOS 程式的 shell 程式；或在 Windows CE 下只用於執行控制台程式的外殼程式.<a href="#fnref-3" class="footnote-backref">&#8617;</a></li><br><li id="fn-4">在 Windows 7 中 csc 的絕對路徑是 xxx.<a href="#fnref-4" class="footnote-backref">&#8617;</a></li><br></ol><br></div>
-
-
-<p>在 C or C++ 程式中, 開發者會在程式開頭用處理器 (directive) 的 <em>#include</em> 指令來 reference 標頭檔 (header file). 標頭檔包含了各式常用函數的函數宣告 (function prototypes <sup><a href="函數宣告">1</a></sup>).</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-11-23T15:23:32.000Z"><a href="/2013/11/23/emacs_了解emacs-layout/">Nov 23 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/11/23/emacs_了解emacs-layout/">Understanding the layout of Emacs</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <img src="http://i.imgur.com/KgD8T0y.png" class="pic1" title="The Emacs display">
-
-
-<p>安裝完 Emacs 24.3 後, 接者來了解一下 Emacs 24.3 的畫面.</p>
-<h1>The Menus</h1>
-<p>如同 Vim, Emacs 同樣也提供了 Menu bar 讓使用者用滑鼠來選取 Emacs 的操作, 如果不想看到 Menu bar, 可以用下面的方式來隱藏.</p>
-<p>此外, Emacs 也有 pop-up Menus</p>
-<h1>Reference</h1>
-<p>Learning GNU Emacs 3rd</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-11-23T07:39:09.000Z"><a href="/2013/11/23/hello-world/">Nov 23 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/11/23/hello-world/">Hello World</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Welcome to <a href="http://zespia.tw/hexo" target="_blank">Hexo</a>! This is your very first post. Check <a href="http://zespia.tw/hexo/docs" target="_blank">documentation</a> to learn how to use.</p>
 
       
     </div>

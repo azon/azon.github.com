@@ -48,39 +48,316 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-11-23T10:28:59.000Z"><a href="/2013/11/23/emacs_安裝emacs243在ubuntu1204/">Nov 23 2013</a></time>
+        <time datetime="2013-12-14T07:29:34.000Z"><a href="/2013/12/14/algorithm-selection_sort/">Dec 14 2013</a></time>
       
       
   
-    <h1 class="title"><a href="/2013/11/23/emacs_安裝emacs243在ubuntu1204/">安裝 Emacs 24.3 在 Ubuntu12.04</a></h1>
+    <h1 class="title"><a href="/2013/12/14/algorithm-selection_sort/">Algorithm - Selection sort algorithm</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>Emacs 是我一直很想學的工具, 但我的習慣不好, 很多事情都只有了解皮毛而已. 該是改掉壞習慣的時候了. </p>
-<p>在 Ubuntu 12.04 上安裝 Emacs 24.3 最簡單的方式就是用 PPA 來安裝, 所以我們開啟 terminal 並輸入下列指令</p>
-<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ sudo add-apt-repository ppa:cassou/emacs
+        <h1>Concept</h1>
+<p>假設有 <em>n</em> 個元素, 我們要幫它們排序, 該怎麼做？ 選擇排序演算法提供了一種方法. 先從 <em>n</em> 個元素找出最小的元素, 然後放在第1個位址. 接著, 再從剩下 <em>n-1</em> 元素中找出最小的元素, 放在第2個位址, 以此類推, 一直到最後一個元素為止.</p>
+<h1>Sample Code</h1>
+<figure class="highlight lang-csharp"><figcaption><span>C# </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+</pre></td><td class="code"><pre><span class="keyword">using</span> System;
+
+<span class="class"><span class="keyword">namespace</span> <span class="title">selectionSort</span>
+{</span>
+	<span class="class"><span class="keyword">class</span> <span class="title">MainClass</span>
+	{</span>
+		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> Main (<span class="keyword">string</span>[] args)
+		{
+			<span class="keyword">int</span>[] unSortArray = <span class="keyword">new</span> <span class="keyword">int</span>[]{<span class="number">0</span>,<span class="number">2</span>,<span class="number">120</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">15</span>};
+			<span class="keyword">int</span> arrayLength = unSortArray.Length;
+			<span class="keyword">int</span>[] sortArray = <span class="keyword">new</span> <span class="keyword">int</span>[arrayLength];			
+
+			Console.Write(<span class="string">"before sort: "</span>);
+			printElements(unSortArray);
+			
+			Console.Write(<span class="string">"after sort: "</span>);
+			sortArray = selectionSort(unSortArray, arrayLength);
+			printElements(sortArray);
+			
+			Console.ReadKey();
+		}
+
+		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> printElements(<span class="keyword">int</span>[] intArray){
+			
+			<span class="keyword">string</span> outputStringFormat = <span class="string">"{0},{1},{2},{3},{4},{5}"</span>;
+			
+			<span class="keyword">string</span> outputString = <span class="keyword">string</span>.Format(
+						outputStringFormat, 
+						intArray[<span class="number">0</span>],
+						intArray[<span class="number">1</span>],
+						intArray[<span class="number">2</span>],
+						intArray[<span class="number">3</span>],
+						intArray[<span class="number">4</span>],
+						intArray[<span class="number">5</span>]);
+			
+			Console.WriteLine(outputString + Environment.NewLine);
+		}
+
+		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] selectionSort(<span class="keyword">int</span>[] unSortArray, <span class="keyword">int</span> arrayLength)
+		{
+			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;arrayLength; i++)
+			{
+				<span class="keyword">int</span> minValue = unSortArray[i];
+				<span class="keyword">int</span> minValueIndex = i;
+				
+				<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;arrayLength; j++)
+				{
+					if(unSortArray[j] &lt; minValue)
+					{
+						minValue = unSortArray[j];
+						minValueIndex = j;
+					}
+				}		
+				
+				unSortArray[minValueIndex] = unSortArray[i];
+				unSortArray[i] = minValue;
+			}
+			
+			<span class="keyword">return</span> unSortArray;
+		}
+	}
+}
+
+
 </pre></td></tr></table></figure>
 
 
-<p>更新 package 清單</p>
-<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ sudo apt-get update
+<h1>References</h1>
+<ol>
+<li><a href="http://www.csie.ntnu.edu.tw/~u91029/SequenceManipulation.html" target="_blank">Selection sort @ 演算法筆記</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Selection_sort" target="_blank">Selection sort @ Wikipedia</a></li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-08T02:47:04.000Z"><a href="/2013/12/08/bookreport_theartofreadablecode_ch5/">Dec 8 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/12/08/bookreport_theartofreadablecode_ch5/">BookReport - The Art of Readable Code Ch5 &amp; Ch6</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1>Mind Map</h1>
+<img src="http://i.imgur.com/HXpJ5vv.png" class="ch5_mindmap" title="ch5_mindmap">
+
+
+<h1>Comment</h1>
+<h2>Ch5. What NOT to Comment</h2>
+<p>不要抗拒寫註解, 也不要為了註解而註解. 註解要用明確的字句撰寫, 全局式註解與區塊式註解可以讓人了解輪廓, 進一步熟悉來龍去脈. 註解內容應該是開發者的理由、目的與想法或是如同導演評註(direcotr commentart)版電影的方式, 提供深入說明. 就算是寫缺陷也沒關係, 因為缺陷可以讓維護人員了解程式的不足之處. </p>
+<p>對維護人員而言, 註解是必要的. 完善的註解讓人知道程式的來龍去脈、 未來改善方向等等. 另外, 常數的註解也十分重要, 因為他可以讓讀者知道設定的理由. 在未來也可以提供設定的依據. </p>
+<h2>Ch6. Making Comment Precise and Compact</h2>
+<p>待補充</p>
+<h1>References</h1>
+<ol>
+<li><a href="http://shop.oreilly.com/product/9780596802301.do" target="_blank">The Art of Readable Code</a></li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-11-26T15:19:35.000Z"><a href="/2013/11/26/bookreport_dotnetbookzero_ch4/">Nov 26 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/11/26/bookreport_dotnetbookzero_ch4/">Book Report - Dot Net Book Zero Ch4. Edit, Compile, Run, Disassemble</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1>Mind Map</h1>
+<h1>Comment</h1>
+<p>本書建議讀者除了 Microsoft Visual Studio 之外, 至少用 MS-DOS<sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup> 的 CLI<sup id="fnref-2"><a href="#fn-2" class="footnote-ref">2</a></sup> 編譯 C# 程式一次. Windows 的命令提示字元視窗<sup id="fnref-3"><a href="#fn-3" class="footnote-ref">3</a></sup>不容易編譯 C# 程式, 原因是 MS-DOS 缺乏正確的環境設定無法找到 C# Compiler 位址. 書中範例是用 <code>notepad</code> 來撰寫 C# 程式碼. 方法如下.</p>
+<p>建立新檔</p>
+<figure class="highlight lang-shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="blockquote">&gt; notepad firstprogram.cs</span>
 </pre></td></tr></table></figure>
 
 
-<p>安裝</p>
-<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ sudo apt-get install emacs24
+<p>輸入程式碼</p>
+<figure class="highlight lang-csharp"><figcaption><span>firstprogram.cs </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="class"><span class="keyword">class</span> <span class="id">FirstProgram</span></span>
+{
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> Main()
+    {
+	System<span class="variable">.Console</span><span class="variable">.WriteLine</span>(<span class="string">"Hello, World!"</span>);
+    }
+}
 </pre></td></tr></table></figure>
 
 
-<p>啟動 Emacs</p>
-<figure class="highlight lang-bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ sudo emacs
+<p>寫的時候注意大小寫, C#是種大、小寫有別(case-sensetive)的程式語言. 完成後, 於 command line 執行 <code>csc</code> <sup id="fnref-4"><a href="#fn-4" class="footnote-ref">4</a></sup>指令編輯 firstprogram.cs 檔案.</p>
+<figure class="highlight lang-shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>&gt; <span class="built_in">csc</span> <span class="transposed_variable">firstprogram.</span>cs
 </pre></td></tr></table></figure>
+
+
+<p>執行</p>
+<figure class="highlight lang-shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="blockquote">&gt; firstprogram.cs</span>
+</pre></td></tr></table></figure>
+
+
+<p>另外, 對於編譯好的 .NET 執行檔(.NET executable)我們可以用 .NET Framework SDK 所附的反組譯工具 <code>Ildasm.exe</code> 進行剖析</p>
+<h1>References</h1>
+<div class="footnotes"><br><ol><br><li id="fn-1"><a href="http://zh.wikipedia.org/wiki/DOS#cite_note-1" target="_blank">Disk Operating System</a>, 這裡指的是微軟磁碟作業系統.<a href="#fnref-1" class="footnote-backref">&#8617;</a></li><br><li id="fn-2"><a href="http://zh.wikipedia.org/zh-tw/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2" target="_blank">Command Line Interface (CLI)</a> 是在圖形使用者介面得到普及之前使用最為廣泛的使用者介面，它通常不支援滑鼠，使用者透過鍵盤輸入指令，電腦接收到指令後，予以執行。也有人稱之為字符使用者介面 (CUI). 常見的 CLI 程式有 Linux 的 Bash 或是 Windows NT 系統的 cmd.exe/命令提示字元. <a href="#fnref-2" class="footnote-backref">&#8617;</a></li><br><li id="fn-3"><a href="http://zh.wikipedia.org/wiki/命令提示字元" target="_blank">Windows 命令提示字元 (cmd.exe)</a> 是 Windows NT 下的一個用於執行 Windows 控制台程式或某些 DOS 程式的 shell 程式；或在 Windows CE 下只用於執行控制台程式的外殼程式.<a href="#fnref-3" class="footnote-backref">&#8617;</a></li><br><li id="fn-4">在 Windows 7 中 csc 的絕對路徑是 xxx.<a href="#fnref-4" class="footnote-backref">&#8617;</a></li><br></ol><br></div>
+
+
+<p>在 C or C++ 程式中, 開發者會在程式開頭用處理器 (directive) 的 <em>#include</em> 指令來 reference 標頭檔 (header file). 標頭檔包含了各式常用函數的函數宣告 (function prototypes <sup><a href="函數宣告">1</a></sup>).</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-11-23T15:23:32.000Z"><a href="/2013/11/23/emacs_了解emacs-layout/">Nov 23 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/11/23/emacs_了解emacs-layout/">Understanding the layout of Emacs</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <img src="http://i.imgur.com/KgD8T0y.png" class="pic1" title="The Emacs display">
+
+
+<p>安裝完 Emacs 24.3 後, 接者來了解一下 Emacs 24.3 的畫面.</p>
+<h1>The Menus</h1>
+<p>如同 Vim, Emacs 同樣也提供了 Menu bar 讓使用者用滑鼠來選取 Emacs 的操作, 如果不想看到 Menu bar, 可以用下面的方式來隱藏.</p>
+<p>此外, Emacs 也有 pop-up Menus</p>
+<h1>Reference</h1>
+<p>Learning GNU Emacs 3rd</p>
 
       
     </div>
@@ -149,9 +426,13 @@
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/emacs24.3/">emacs24.3</a><small>1</small></li>
+    <li><a href="/tags/algorithm/">algorithm</a><small>1</small></li>
   
-    <li><a href="/tags/ubuntu12.04/">ubuntu12.04</a><small>1</small></li>
+    <li><a href="/tags/bookreport/">bookreport</a><small>2</small></li>
+  
+    <li><a href="/tags/c#/">c#</a><small>2</small></li>
+  
+    <li><a href="/tags/emacs24.3/">emacs24.3</a><small>1</small></li>
   
   </ul>
 </div>
@@ -161,7 +442,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2013 azon
+  &copy; 2014 azon
   
 </div>
 <div class="clearfix"></div></footer>
